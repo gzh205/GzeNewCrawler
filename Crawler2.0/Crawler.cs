@@ -6,15 +6,42 @@ using System.Threading;
 
 namespace Crawler2
 {
+    /// <summary>
+    /// Crawler需要实现抽象方法PageProcessor才能使用
+    /// </summary>
     public abstract class Crawler
     {
+        /// <summary>
+        /// 已经打开过页面的url列表
+        /// </summary>
         public List<Uri> Urls;
+        /// <summary>
+        /// 网页队列，用于生产者/消费者模式的线程协调
+        /// </summary>
         public Queue queue { get; private set; }
+        /// <summary>
+        /// 线程数组
+        /// </summary>
         private Thread[] threads{ set; get; }
+        /// <summary>
+        /// 线程数量
+        /// </summary>
         public int threadNum;
+        /// <summary>
+        /// 读写信号量，用于保证同一时间只能有一个线程访问网页队列
+        /// </summary>
         private Semaphore read;
+        /// <summary>
+        /// 爬虫的爬取深度
+        /// </summary>
         public int depth;
+        /// <summary>
+        /// 用于标记网页队列中元素的个数，当队列中没有元素时，读取操作缩在的线程会被阻塞
+        /// </summary>
         private Semaphore queueNum;
+        /// <summary>
+        /// 当页面打开失败时，重试的次数
+        /// </summary>
         public static int RetryTime;
         public Crawler()
         {
@@ -44,6 +71,10 @@ namespace Crawler2
             this.depth = depth;
             return this;
         }
+        /// <summary>
+        /// 调用run方法开始运行爬虫
+        /// </summary>
+        /// <param name="url"></param>
         public void run(string url)
         {
             Uri uri = new Uri(url);
@@ -56,6 +87,9 @@ namespace Crawler2
                 threads[i].Start();
             }
         }
+        /// <summary>
+        /// 线程函数
+        /// </summary>
         public void ThreadProc()
         {
             while (true) 

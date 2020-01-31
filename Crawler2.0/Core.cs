@@ -46,10 +46,15 @@ namespace Crawler2
             }
             catch (WebException)
             {
-                return null;
+                for(int i = 0; i < Crawler.RetryTime; i++)
+                {
+                    str = client.DownloadString(url);
+                    if (str != null && str != "") break;
+                }
             }
             core.thisUrl = url;
             core.webPage = new HtmlAgilityPack.HtmlDocument();
+            if (str == null || str == "") return null;
             core.webPage.LoadHtml(str);
             core.depth = depth;
             return core;
