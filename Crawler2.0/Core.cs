@@ -29,6 +29,27 @@ namespace Crawler2
         public Core()
         {
         }
+        public bool connect()
+        {
+            WebClient client = new WebClient();
+            string str = null;
+            try
+            {
+                str = client.DownloadString(this.thisUrl);
+            }
+            catch (WebException)
+            {
+                for (int i = 0; i < Crawler.RetryTime; i++)
+                {
+                    str = client.DownloadString(this.thisUrl);
+                    if (str != null && str != "") break;
+                }
+            }
+            this.webPage = new HtmlAgilityPack.HtmlDocument();
+            if (str == null || str == "") return false;
+            this.webPage.LoadHtml(str);
+            return true;
+        }
         /// <summary>
         /// 获取一个页面对象
         /// </summary>
@@ -36,9 +57,9 @@ namespace Crawler2
         /// <param name="depth">爬虫的爬取深度</param>
         /// <returns>如果成功打开网页，返回Core对象。若无法打开网页或超链接是无效的，返回null</returns>
         public static Core getCore(Uri url, int depth)
-        {
-            WebClient client = new WebClient();
+        {          
             Core core = new Core();
+            /*
             string str = null;
             try
             {
@@ -51,11 +72,12 @@ namespace Crawler2
                     str = client.DownloadString(url);
                     if (str != null && str != "") break;
                 }
-            }
+            }*/
             core.thisUrl = url;
+            /*
             core.webPage = new HtmlAgilityPack.HtmlDocument();
             if (str == null || str == "") return null;
-            core.webPage.LoadHtml(str);
+            core.webPage.LoadHtml(str);*/
             core.depth = depth;
             return core;
         }
@@ -71,14 +93,24 @@ namespace Crawler2
             {
                 string str = n.GetAttributeValue("href", null);
                 if (str != null)
-                    list.Add(new Uri(thisUrl, str));
+                {
+                    try
+                    {
+                        list.Add(new Uri(thisUrl, str));
+                    }
+                    catch (System.UriFormatException)
+                    {
+                        continue;
+                    }
+                }
             }
             this.urlLists = list.ToArray();
         }
         /// <summary>
         /// 根据字符串提供的xpath获取匹配到的字符串
         /// </summary>
-        /// <param name="str">xpath</param>
+   
+            /// <param name="str">xpath</param>
         /// <returns>字符串</returns>
         public string[] getXPath(string str)
         {

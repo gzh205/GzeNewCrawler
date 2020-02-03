@@ -98,26 +98,28 @@ namespace Crawler2
                 queueNum.WaitOne();
                 Core core = (Core)queue.Dequeue();
                 read.Release();
-                core.getUrls();
-                this.pageProcesser(core);
-                if (core.depth < depth)
+                if (core.connect())
                 {
-                    if (core.urlLists == null) continue;
-                    foreach (Uri u in core.urlLists)
+                    core.getUrls();
+                    this.pageProcesser(core);
+                    if (core.depth < depth)
                     {
-                        if (!(Urls.Contains(u) || u.AbsoluteUri.Contains("javascript:") || u.AbsoluteUri == "#"))
+                        if (core.urlLists == null) continue;
+                        foreach (Uri u in core.urlLists)
                         {
-                            Core c = Core.getCore(u, core.depth + 1);
-                            if (c == null) continue;
-                            Urls.Add(u);
-                            queue.Enqueue(c);
-                            queueNum.Release();
+                            if (!(Urls.Contains(u) || u.AbsoluteUri.Contains("javascript:") || u.AbsoluteUri == "#"))
+                            {
+                                Core c = Core.getCore(u, core.depth + 1);
+                                Urls.Add(u);
+                                queue.Enqueue(c);
+                                queueNum.Release();
+                            }
+                            else Console.WriteLine(u.AbsoluteUri + "--droped");
                         }
-                        else Console.WriteLine(u.AbsoluteUri + "--droped");
                     }
+                    else if (queue.Count == 0)
+                        break;
                 }
-                else if (queue.Count == 0)
-                    break;
             }
         }
         public abstract void pageProcesser(Core core);
