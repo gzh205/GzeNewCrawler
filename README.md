@@ -1,5 +1,5 @@
 # GzeNewCrawler  
-SearchTest的二次开发，完善了部分功能。
+对SearchTest进行了重新设计，增加了部分功能。
 ## 使用方式  
 1.创建一个Crawler类的子类  
 2.实现PageProcessor方法  
