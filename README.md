@@ -1,5 +1,5 @@
 # GzeNewCrawler  
-纯属自娱自乐的爬虫框架，支持多线程处理。  
+SearchTest的二次开发，完善了部分功能。
 ## 使用方式  
 1.创建一个Crawler类的子类  
 2.实现PageProcessor方法  
