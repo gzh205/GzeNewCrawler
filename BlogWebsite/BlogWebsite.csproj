@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{158D70E8-315D-4E76-A822-E4900B56FCA8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BlogWebsite</RootNamespace>
+    <AssemblyName>BlogWebsite</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cdpf\Cache.cs" />
+    <Compile Include="cdpf\Config.cs" />
+    <Compile Include="cdpf\Connection.cs" />
+    <Compile Include="cdpf\DbInfo.cs" />
+    <Compile Include="cdpf\LRUList.cs" />
+    <Compile Include="cdpf\Node.cs" />
+    <Compile Include="cdpf\PrimaryKey.cs" />
+    <Compile Include="cdpf\Sql.cs" />
+    <Compile Include="cdpf\SqlException.cs" />
+    <Compile Include="cdpf\Table.cs" />
+    <Compile Include="cdpf\Tasks.cs" />
+    <Compile Include="cdpf\task\Delete.cs" />
+    <Compile Include="cdpf\task\Insert.cs" />
+    <Compile Include="cdpf\task\Select.cs" />
+    <Compile Include="cdpf\task\Update.cs" />
+    <Compile Include="Config\Cfg.cs" />
+    <Compile Include="Config\Response.cs" />
+    <Compile Include="DynamicCompiler\CompilerCore.cs" />
+    <Compile Include="DynamicCompiler\Core\Array.cs" />
+    <Compile Include="DynamicCompiler\Core\Class.cs" />
+    <Compile Include="DynamicCompiler\Core\Data.cs" />
+    <Compile Include="DynamicCompiler\Core\Element.cs" />
+    <Compile Include="DynamicCompiler\Core\Function.cs" />
+    <Compile Include="DynamicCompiler\Core\FunctionElement.cs" />
+    <Compile Include="DynamicCompiler\Core\IfElse.cs" />
+    <Compile Include="DynamicCompiler\Core\Library\Attach.cs" />
+    <Compile Include="DynamicCompiler\Core\Library\Download.cs" />
+    <Compile Include="DynamicCompiler\Core\Library\Get.cs" />
+    <Compile Include="DynamicCompiler\Core\Library\IsString.cs" />
+    <Compile Include="DynamicCompiler\Core\Library\Print.cs" />
+    <Compile Include="DynamicCompiler\Core\Library\Read.cs" />
+    <Compile Include="DynamicCompiler\Core\Library\ReadFile.cs" />
+    <Compile Include="DynamicCompiler\Core\Library\ToNumber.cs" />
+    <Compile Include="DynamicCompiler\Core\Library\WriteFile.cs" />
+    <Compile Include="DynamicCompiler\Core\Sentence.cs" />
+    <Compile Include="DynamicCompiler\Core\While.cs" />
+    <Compile Include="DynamicCompiler\SyntaxErrorException.cs" />
+    <Compile Include="Exceptions\InvalidNameException.cs" />
+    <Compile Include="Exceptions\InvalidRequestException.cs" />
+    <Compile Include="Exceptions\InvalidSessionException.cs" />
+    <Compile Include="Exceptions\SingletonConstructError.cs" />
+    <Compile Include="Exceptions\UnsupportedMethod.cs" />
+    <Compile Include="LoadBalance\JsonRPCData.cs" />
+    <Compile Include="LoadBalance\JsonRPCResult.cs" />
+    <Compile Include="LoadBalance\LBClient.cs" />
+    <Compile Include="LoadBalance\RPCClientInfo.cs" />
+    <Compile Include="LoadBalance\LBServer.cs" />
+    <Compile Include="Logger\Log.cs" />
+    <Compile Include="models\Blog_Info.cs" />
+    <Compile Include="models\Blog_User.cs" />
+    <Compile Include="models\Blog_View.cs" />
+    <Compile Include="MySQL\MySQLCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MySQL\MySQLConnector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LoadBalance\RPCClient.cs" />
+    <Compile Include="LoadBalance\RPCServer.cs" />
+    <Compile Include="RPC\RPC.cs" />
+    <Compile Include="ServerScript\ScriptController.cs" />
+    <Compile Include="Server\FileLoader.cs" />
+    <Compile Include="Server\FileResponse.cs" />
+    <Compile Include="Server\Page.cs" />
+    <Compile Include="Server\PageInfo.cs" />
+    <Compile Include="Server\Request.cs" />
+    <Compile Include="Server\Response.cs" />
+    <Compile Include="Server\response_impl\BinaryData.cs" />
+    <Compile Include="Server\response_impl\Empty.cs" />
+    <Compile Include="Server\response_impl\Redrict.cs" />
+    <Compile Include="Server\response_impl\StringData.cs" />
+    <Compile Include="Server\response_impl\WebPageData.cs" />
+    <Compile Include="Server\Session.cs" />
+    <Compile Include="Server\WebServ.cs" />
+    <Compile Include="MainWnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWnd.Designer.cs">
+      <DependentUpon>MainWnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextIO\TextConsoleReader.cs" />
+    <Compile Include="TextIO\TextConsoleWriter.cs" />
+    <Compile Include="Tools\JsonEncoder.cs" />
+    <Compile Include="Tools\JsonSerializer\Deserializer.cs" />
+    <Compile Include="Tools\JsonSerializer\Json.cs" />
+    <Compile Include="Tools\JsonSerializer\Serializer.cs" />
+    <Compile Include="Tools\MailService.cs" />
+    <Compile Include="Tools\JsonProperty.cs" />
+    <Compile Include="Tools\RandomStringGenerator.cs" />
+    <Compile Include="Tools\Utils.cs" />
+    <Compile Include="WebPages\BlogPage.cs" />
+    <Compile Include="WebPages\CommitComment.cs" />
+    <Compile Include="WebPages\CreateBlog.cs" />
+    <Compile Include="WebPages\Register.cs" />
+    <Compile Include="Tools\ValidateCodeHelper.cs" />
+    <Compile Include="WebPages\Index.cs" />
+    <Compile Include="WebPages\Login.cs" />
+    <Compile Include="WebPages\ShowBlog.cs" />
+    <Compile Include="WebPages\ShowDetail.cs" />
+    <Compile Include="WebPages\UploadBlog.cs" />
+    <Compile Include="WebPages\ValidReg.cs" />
+    <Compile Include="WebPages\Yzm.cs" />
+    <Content Include="www\bootstrap\css\demo.css" />
+    <Content Include="www\bootstrap\css\dropify.css" />
+    <Content Include="www\bootstrap\fonts\dropify.svg" />
+    <Content Include="www\bootstrap\js\dropify.js" />
+    <Content Include="www\js\background.js" />
+    <Content Include="www\webpages\create_blog.html" />
+    <Content Include="www\webpages\blog_detail.html" />
+    <Content Include="www\bootstrap\js\jQuery.min.js" />
+    <Content Include="www\img\suspend.png" />
+    <Content Include="www\template.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\webpages\waiting_reg.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="MainWnd.resx">
+      <DependentUpon>MainWnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="FileContent.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="ResponseCode.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="www\bootstrap\css\bootstrap-theme.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="www\bootstrap\css\bootstrap-theme.min.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="www\bootstrap\css\bootstrap.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="www\bootstrap\css\bootstrap.min.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="www\bootstrap\fonts\dropify.eot" />
+    <None Include="www\bootstrap\fonts\dropify.ttf" />
+    <None Include="www\bootstrap\fonts\dropify.woff" />
+    <None Include="www\bootstrap\fonts\glyphicons-halflings-regular.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="www\bootstrap\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="www\bootstrap\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="www\bootstrap\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DBSettings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebSiteDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebSiteDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\bootstrap\css\bootstrap-theme.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\bootstrap\css\bootstrap-theme.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\bootstrap\css\bootstrap.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\bootstrap\css\bootstrap.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\bootstrap\fonts\glyphicons-halflings-regular.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\bootstrap\js\bootstrap.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\bootstrap\js\bootstrap.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\bootstrap\js\npm.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\error\404.html" />
+    <Content Include="www\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\register.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\webpages\valid_email.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\webpages\blogpage.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="www\webpages\sendblog.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="记录.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,14 @@
+﻿default_page=index #默认网页
+root_dir=D:\CsPrj\BlogWebsite\bin\Debug\www #C:\Users\19425\OneDrive\BlogWebsite\www
+http_version=http/1.1 #不要改这个值，因为服务器没有实现http2和3的功能
+ip=127.0.0.1 #该服务器的IP地址(有公网IP就设置为公网IP，否则就设置成局域网IP，如果你有域名，就用域名代替IP)
+port=8080 #http协议默认使用80端口，当然，你也可以自己设置其他端口，只要不和其他程序发生冲突就行
+server_name=gzh_test_serv #服务器名称，这个名称随便起
+session_timeout=300 #一个session在服务器中的保存时间，超过这个时间session自动删除
+log_file_name=test.log #日志文件名
+smtp_host = smtp.qq.com #smtp邮件服务器的域名
+smtp_userName = 1942592358@qq.com
+smtp_password = ratnvtbxvflbbcjc #这是QQ邮箱的授权码
+session_length = 20 #sessionid中随机字符串的长度
+valid_url_length = 10 #邮箱验证链接中参数的长度
+rpc_port=8088 #rpc服务器地址

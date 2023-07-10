@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+  <add namespace="BlogWebsite.models" filename="System.Data" classname="System.Data.SqlClient.SqlConnection" connectionstring="Data Source=49.235.98.62;Initial Catalog=gzh_blog;User ID=usr;Password=123456;Connection Timeout=30" />
+  <threadnum>8</threadnum>
+  <cachesize>65536</cachesize>
+</Config>
